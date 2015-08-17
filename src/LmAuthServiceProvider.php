@@ -34,7 +34,7 @@ class LmAuthServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$config = $this->app['config']->get('lmauth');
-		print_r($config);
+		error_log(print_r($config));
 
 		if(is_null($config)) return; // In case there is no config
 
