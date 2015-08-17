@@ -17,6 +17,10 @@ class LmAuthServiceProvider extends ServiceProvider {
 			__DIR__.'/lmauth.php' => 'lmauth.php',
 		]);
 
+		$config = $this->app['config']->get('lmauth');
+		error_log("++++++++++++++++++++boot+++++++++++++++++++++++++");
+		error_log(print_r($config));
+
 		$this->app['auth']->extend('lmauth', function(Application $app){
 
 			$config = $app['config']->get('lmauth');
