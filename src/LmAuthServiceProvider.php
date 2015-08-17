@@ -44,11 +44,11 @@ class LmAuthServiceProvider extends ServiceProvider {
 
 				$connection = $closure($this->app);
 
-				$this->app->singleton('lmauth.connection', $connection);
+				$this->app->singleton('lmauth_connection', $connection);
 
 			} else {
 
-				$this->app->singleton('lmauth.connection', function(Application $app){
+				$this->app->singleton('lmauth_connection', function(Application $app){
 
 					return new \MongoClient();
 
@@ -56,9 +56,9 @@ class LmAuthServiceProvider extends ServiceProvider {
 
 			}
 
-			$this->app->singleton('lmauth.collection', function(Application $app) use($config) {
+			$this->app->singleton('lmauth_connection', function(Application $app) use($config) {
 
-				$mongoClient = $app['lmauth.connection'];
+				$mongoClient = $app['lmauth_connection'];
 
 				return (new MongoConnection($mongoClient, $config))
 					->getDefaultDatabase()->{$config['auth_collection_name']};
