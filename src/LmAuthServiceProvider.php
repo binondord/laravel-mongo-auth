@@ -13,7 +13,7 @@ class LmAuthServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->publishes([
-			__DIR__.'/lmauth.php' => config_path('lmauth.php'),
+			__DIR__.'/lmauth.php' => $this->config_path('lmauth.php'),
 		]);
 
 		$this->app['auth']->extend('lmauth', function(Application $app){
@@ -63,6 +63,16 @@ class LmAuthServiceProvider extends ServiceProvider {
 
 			});
 
+		}
+	}
+	
+	private function config_path($path)
+	{
+		if(!function_exists('config_path'))
+		{
+			return app()->make('path.config').($path ? DIRECTORY_SEPARATOR.$path : $path);
+		}else{
+			return config_path('lmauth.php');
 		}
 	}
 
