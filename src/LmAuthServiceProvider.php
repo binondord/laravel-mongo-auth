@@ -1,6 +1,7 @@
 <?php namespace Reshadman\LmAuth;
 
-use Illuminate\Foundation\Application;
+#use Illuminate\Foundation\Application;
+use Laravel\Lumen\Application;
 use Illuminate\Support\ServiceProvider;
 
 class LmAuthServiceProvider extends ServiceProvider {
