@@ -7,12 +7,6 @@
             "email": "pcfeeler@gmail.com"
         }
     ],
-    /*"require": {
-        "ext-mongo": "*",
-        "illuminate/contracts": "5.0.*",
-        "illuminate/support": "5.0.*",
-        "illuminate/auth" : "5.0.*"
-    },*/
     "required-dev": {
         "mockery/mockery" : "0.9.*",
         "phpunit/phpunit" : "~4.0"
