@@ -21,7 +21,7 @@ class LmAuthServiceProvider extends ServiceProvider {
 
 			$config = $app['config']->get('lmauth');
 
-			return new MongoDbUserProvider($app['lmauth.collection'], $app['hash'], $config);
+			return new MongoDbUserProvider($app['lmauth_collection'], $app['hash'], $config);
 
 		});
 	}
