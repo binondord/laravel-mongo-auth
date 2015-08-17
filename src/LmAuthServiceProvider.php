@@ -17,7 +17,7 @@ class LmAuthServiceProvider extends ServiceProvider {
 			__DIR__.'/lmauth.php' => 'lmauth.php',
 		]);
 
-		/*
+		
 		$config = $this->app['config']->get('lmauth');
 		error_log("++++++++++++++++++++boot+++++++++++++++++++++++++");
 		error_log(print_r($config));
@@ -28,7 +28,7 @@ class LmAuthServiceProvider extends ServiceProvider {
 
 			return new MongoDbUserProvider($app['lmauth_collection'], $app['hash'], $config);
 
-		});*/
+		});
 	}
 
 	/**
@@ -45,16 +45,16 @@ class LmAuthServiceProvider extends ServiceProvider {
 		if(is_null($config)) return; // In case there is no config
 
 		if($config['use_default_collection_provider']) {
-				;
+				
 			if(! is_null($closure = $config['default_connection_closure'])){
 
 				$connection = $closure($this->app);
 
-				$this->app->singleton('lmauth_connection', $connection);
+				$this->app['lmauth_collection'] = $this->app->singleton('lmauth_connection', $connection);
 
 			} else {
 
-				$this->app->singleton('lmauth_connection', function(Application $app){
+				$this->app['lmauth_collection'] = $this->app->singleton('lmauth_connection', function(Application $app){
 
 					return new \MongoClient();
 
